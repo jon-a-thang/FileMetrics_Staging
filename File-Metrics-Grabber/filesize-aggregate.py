@@ -7,9 +7,6 @@
     
     Author:
         Jonathan Jang
-    
-    Company:
-        Longi Engineering
 """
 
 import os
@@ -113,30 +110,30 @@ def file_aggregate(csv_f, out_f, df_col):
     """
     ### For the first part of getting the filesizes
     ## Sending output to an out file
-    # sys.stdout = open('C:\\Users\\Admin\\Desktop\\FileSizeAggregate-DI-Output-6-29.txt', 'w')
+    # sys.stdout = open('C:\\PATH_TO_FILE\\FileSizeAggregate-DI-Output-6-29.txt', 'w')
     sys.stdout = open(out_f, 'w')
 
     ## For Testing purposes
-    # dir_path = 'Z:\\TRLA\\CTS Exports\\testfilesize\\'
+    # dir_path = 'C:\\PATH\\OF\\FOLDER\\'
     # get_filelocs(dir_path)
 
     ## Getting the filesizes
-    # csv_f = 'Z:\\TRLA\\CTS Exports\\FinalExport.csv'
-    # csv_f = 'C:\\Users\\jjang\\Desktop\\testfilesizes.xlsx'
-    # csv_f = 'C:\\Users\\Admin\\Desktop\\FinalExport.csv'
-    # csv_f = 'C:\\Users\Admin\\Desktop\\docs index files.csv'
+    # csv_f = 'C:\\PATH_TO_FILE\\FinalExport.csv'
+    # csv_f = 'C:\\PATH_TO_FILE\\testfilesizes.xlsx'
+    # csv_f = 'C:\\PATH_TO_FILE\\FinalExport.csv'
+    # csv_f = 'C:\\PATH_TO_FILE\\docs index files.csv'
     get_filepaths(csv_f, df_col)
 
     ## Closing the out file
     sys.stdout.close()
 
     # ## Looping the out file to search for the files not found
-    # # lines = open('C:\\Users\\Admin\\Desktop\\FileSizeAggregate-Output.txt', 'r').readlines()
+    # # lines = open('C:\\PATH\\OF\\FOLDER\\FileSizeAggregate-Output.txt', 'r').readlines()
     # # for line in lines:
     # #     # print(f"Line: {line}")
     # #     if "file:" in line:
     # df_txt = pd.read_csv(out_f, delimiter='\t')
-    # # df_txt.to_csv('C:\\Users\\Admin\\Desktop\\FileSizeAggregate-DI-Output-6-29.csv', index=False)
+    # # df_txt.to_csv('C:\\PATH\\OF\\FOLDER\\FileSizeAggregate-DI-Output-6-29.csv', index=False)
     # df_txt.to_csv(out_f + '_to-csv.csv')
 
 
@@ -149,11 +146,11 @@ def stage_data(excel_f):
         string of the csv file that we are using to feed in the data
     :return:
     """
-    # if not os.path.exists("C:\\Users\\Admin\\Desktop\\output-docket.txt"):
-    #         os.makedirs("C:\\Users\\Admin\\Desktop\\output-docket.txt")
-    f = open("C:\\Users\\Admin\\Desktop\\output-docket.txt", "a")
+    # if not os.path.exists("C:\\PATH\\OF\\FOLDER\\output-docket.txt"):
+    #         os.makedirs("C:\\PATH\\OF\\FOLDER\\output-docket.txt")
+    f = open("C:\\PATH\\OF\\FOLDER\\output-docket.txt", "a")
 
-    dst_parent_path = 'D:\\TRLA-PythonStagerMigration\\EXPORT-Docket\\'
+    dst_parent_path = 'C:\\PATH\\OF\\FOLDER\\EXPORT-Docket\\'
 
     df_all = pd.read_excel(excel_f).fillna(0)
     df = pd.read_excel(excel_f)['doc_filena_FILEPATH'].fillna(0)
@@ -246,11 +243,11 @@ def stage_data_di(excel_f):
         string of the csv file that we are using to feed in the data
     :return:
     """
-    # if not os.path.exists("C:\\Users\\Admin\\Desktop\\output-docket.txt"):
-    #         os.makedirs("C:\\Users\\Admin\\Desktop\\output-docket.txt")
-    f = open("C:\\Users\\Admin\\Desktop\\output-docket.txt", "a")
+    # if not os.path.exists("C:\\PATH\\OF\\FOLDER\\output-docket.txt"):
+    #         os.makedirs("C:\\PATH\\OF\\FOLDER\\output-docket.txt")
+    f = open("C:\\PATH\\OF\\FOLDER\\output-docket.txt", "a")
 
-    dst_parent_path = 'D:\\TRLA-PythonStagerMigration\\DI_EXPORT\\'
+    dst_parent_path = 'C:\\PATH\\OF\\FOLDER\\DI_EXPORT\\'
 
     df_all = pd.read_excel(excel_f).fillna(0)
     df = pd.read_excel(excel_f)['DI FP'].fillna(0)
@@ -270,7 +267,7 @@ def stage_data_di(excel_f):
         # print(f"\tfilesize: {filesize} \t {type(filesize)}\n")
 
         dst_folder_path = dst_parent_path + str(case_id) + '\\'
-        # For handling base case of ensuring that the caseid filpath exists
+        # For handling base case of ensuring that the caseid filepath exists
         if not os.path.exists(dst_folder_path):
             os.makedirs(dst_folder_path)
         # For ensuring that the "Doc Index" folder exists as well
@@ -341,18 +338,18 @@ def main():
     start_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     # ### For the first part of getting the filesizes
-    # csv_f_1 = 'C:\\Users\\Admin\\Desktop\\docs index export.csv'
-    # csv_f_2 = 'C:\\Users\\Admin\\Desktop\\Docket.csv'
-    # # csv_f_3 = 'C:\\Users\\Admin\\Desktop\\Docs Index with date.csv'
-    # out_1 = 'C:\\Users\\Admin\\Desktop\\filesize-sum-out_doc_index_export.txt'
-    # out_2 = 'C:\\Users\\Admin\\Desktop\\filesize-sum-out_docket.txt'
-    # # out_3 = 'C:\\Users\\Admin\\Desktop\\filesize-sum-out_docs_index_w_date.txt'
+    # csv_f_1 = 'C:\\PATH\\OF\\FOLDER\\docs index export.csv'
+    # csv_f_2 = 'C:\\PATH\\OF\\FOLDER\\Docket.csv'
+    # # csv_f_3 = 'C:\\PATH\\OF\\FOLDER\\Docs Index with date.csv'
+    # out_1 = 'C:\\PATH\\OF\\FOLDER\\filesize-sum-out_doc_index_export.txt'
+    # out_2 = 'C:\\PATH\\OF\\FOLDER\\filesize-sum-out_docket.txt'
+    # # out_3 = 'C:\\PATH\\OF\\FOLDER\\filesize-sum-out_docs_index_w_date.txt'
     # file_aggregate(csv_f_1, out_1, 'DI_INDEX_di_folder_')
     # file_aggregate(csv_f_2, out_2, 'doc_filena')
 
     ## For staging the data to get the files copied and ready for Migration Mover
-    # stage_data('C:\\Users\\Admin\\Desktop\\TRLA-StageFile-Docket.xlsx')
-    stage_data_di('C:\\Users\\Admin\\Desktop\\TRLA-StageFile-docs index files.xlsx')
+    # stage_data('C:\\PATH\\OF\\FOLDER\\TRLA-StageFile-Docket.xlsx')
+    stage_data_di('C:\\PATH\\OF\\FOLDER\\TRLA-StageFile-docs index files.xlsx')
 
     # end_time = time.time()
     end_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
