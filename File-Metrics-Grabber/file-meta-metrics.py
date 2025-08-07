@@ -7,9 +7,6 @@
     
     Author:
         Jonathan Jang
-    
-    Company:
-        Longi Engineering
 """
 
 import os, re, csv, time, math
@@ -36,7 +33,7 @@ def get_meta_data(param1, param2):
     # # To CSV
     # dict_di_file = {'caseid': df_caseid_doc_ie_col}
     # tmp_df = pd.DataFrame(dict_di_file)
-    # tmp_df.to_csv('\\\\ledc2017\\itsupport\\TRLA\\CTS Exports\\unique-caseid-doc_index_export_csv.csv')
+    # tmp_df.to_csv('<Path_to_file>\\unique-caseid-doc_index_export_csv.csv')
 
     # Docket.csv
     df_docket = pd.read_csv(param2).fillna('NONE-NAN')
@@ -49,7 +46,7 @@ def get_meta_data(param1, param2):
     # # TO CSV
     # dict_caseid = {'caseid': df_caseid_col}
     # tmp_df = pd.DataFrame(dict_caseid)
-    # tmp_df.to_csv('\\\\ledc2017\\itsupport\\TRLA\\CTS Exports\\unique-caseid-Docket_csv.csv')
+    # tmp_df.to_csv('<Path_to_file>\\unique-caseid-Docket_csv.csv')
 
     # Sum - Totals
     sum_total_col = df_doc_index_export.shape[0] + df_docket.shape[0]
@@ -60,7 +57,7 @@ def get_meta_data(param1, param2):
     print(f"{sum_total_unique_files}\t: Total Number of unique files from BOTH CSV\n")
     ## Getting new unique list
     # temp-unique-case-id-unfiltered.csv
-    temp_fp = '\\\\ledc2017\\itsupport\\TRLA\\CTS Exports\\temp-unique-case-id-unfiltered.csv'
+    temp_fp = '<Path_to_file>\\temp-unique-case-id-unfiltered.csv'
     df_docket = pd.read_csv(temp_fp).fillna('NONE-NAN')
     # Getting the numbers
     df_all_unique_caseid = df_docket['caseid'].unique()
@@ -69,7 +66,7 @@ def get_meta_data(param1, param2):
     # TO CSV
     dict_caseid = {'all unique caseid': df_all_unique_caseid}
     tmp_df = pd.DataFrame(dict_caseid)
-    tmp_df.to_csv('\\\\ledc2017\\itsupport\\TRLA\\CTS Exports\\all-unique-caseid.csv')
+    tmp_df.to_csv('<Path_to_file>\\all-unique-caseid.csv')
 
 
 
@@ -77,8 +74,8 @@ def main():
     """
         Main function of the python project
     """
-    csv_f_1 = '\\\\ledc2017\\itsupport\\TRLA\\CTS Exports\\docs index export.csv'
-    csv_f_2 = '\\\\ledc2017\\itsupport\\TRLA\\CTS Exports\\Docket.csv'
+    csv_f_1 = '<Path_to_file>\\docs index export.csv'
+    csv_f_2 = '<Path_to_file>\\\\Docket.csv'
     get_meta_data(csv_f_1, csv_f_2)
 
 
