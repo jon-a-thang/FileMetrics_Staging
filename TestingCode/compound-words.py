@@ -7,9 +7,7 @@
     
     Author:
         Jonathan Jang
-    
-    Company:
-        Longi Engineering
+        
 """
 
 import os, re, csv, time, math
